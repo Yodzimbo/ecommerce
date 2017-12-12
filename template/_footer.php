@@ -9,6 +9,6 @@
     </div>
 </div>
 <script src="/js/jquery.min.js" type="text/javascript"></script>
-<script src="/js/basket" type="text/javascript"></script>
+<script src="/js/basket.js" type="text/javascript"></script>
 </body>
 </html>

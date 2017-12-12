@@ -5,20 +5,19 @@ $(document).ready(function () {
         $.ajax({
             url: '/mod/basket_small_refresh.php',
             dataType: 'json',
-            success:function (data) {
-                $.each(data, function (k, v) {
-                    $("#basket_left ." + k + "span").text(v);
+            success: function(data) {
+                $.each(data, function(k, v) {
+                    $("#basket_left ." + k + " span").text(v);
                 });
             },
-            error: function (data) {
-                alert("Błąd AJAX");
+            error: function(data) {
+                alert("An error has occurred");
             }
         });
 
     }
 
-    if($(".add_to_basket").length > 0)
-    {
+    if ($(".add_to_basket").length > 0) {
         $(".add_to_basket").click(function () {
 
             var trigger = $(this);
@@ -26,11 +25,11 @@ $(document).ready(function () {
             var item = param.split("_");
 
             $.ajax({
-                type: 'post',
+                type: 'POST',
                 url: '/mod/basket.php',
                 dataType: 'json',
-                data: ({id : item[0], job : item[1]}),
-                success:function (data) {
+                data: ({id: item[0], job: item[1]}),
+                success: function (data) {
                     var new_id = item[0] + '_' + data.job;
                     if (data.job != item[1]) {
                         if (data.job == 0) {
@@ -46,11 +45,11 @@ $(document).ready(function () {
                     }
                 },
                 error: function (data) {
-                    alert("Błąf AJAX");
+                    alert("An error has occurred");
                 }
             });
             return false;
-        })
-    }
 
+        });
+    }
 });

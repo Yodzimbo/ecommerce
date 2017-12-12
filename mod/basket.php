@@ -6,9 +6,7 @@
  * Time: 21:29
  */
     require_once '../inc/autoload.php';
-    if(isset($_POST['job']) && isset($_POST['id']))
-    {
-
+    if (isset($_POST['job']) && isset($_POST['id'])) {
         $out = array();
 
         $job = $_POST['job'];
@@ -17,11 +15,10 @@
         $objCatalogue = new Catalogue();
         $product = $objCatalogue->getProduct($id);
 
-        if(!empty($product))
-        {
+        if (!empty($product)) {
 
-            switch ($job)
-            {
+            switch($job) {
+
                 case 0:
                     Session::removeItem($id);
                     $out['job'] = 1;
@@ -31,9 +28,9 @@
                     Session::setItem($id);
                     $out['job'] = 0;
                     break;
+
             }
             echo json_encode($out);
 
         }
-
     }

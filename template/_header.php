@@ -2,7 +2,6 @@
 
     $objCatalogue = new Catalogue();
     $cats = $objCatalogue->getCategories();
-
     $objBusiness = new Business();
     $business = $objBusiness->getBusiness();
 
@@ -27,22 +26,21 @@
         <div id="outer">
             <div id="wrapper">
                 <div id="left">
-                    <?php require_once 'basket_left.php'; ?>
-                    <?php if(!empty($cats)) {?>
-                    <h2>Categories</h2>
-                    <ul id="navigation">
+                    <?php require_once('basket_left.php'); ?>
+                    <?php if (!empty($cats)) { ?>
+                        <h2>Categories</h2>
+                        <ul id="navigation">
                             <?php
-                                foreach ($cats as $cat)
-                                {
-                                    echo "<li><a href=\"/?page=catalogue&amp;category=".$cat['id']."\"";
-                                    echo Helper::getActive(array('category' => $cat['id']));
-                                    echo ">";
-                                    echo Helper::encodeHTML($cat['name']);
-                                    echo "</a></li>";
-                                }
+                            foreach($cats as $cat) {
+                                echo "<li><a href=\"/?page=catalogue&amp;category=".$cat['id']."\"";
+                                echo Helper::getActive(array('category' => $cat['id']));
+                                echo ">";
+                                echo Helper::encodeHtml($cat['name']);
+                                echo "</a></li>";
+                            }
                             ?>
-                    </ul>
-                            <?php } ?>
+                        </ul>
+                    <?php } ?>
 
                 </div>
                 <div id="right">

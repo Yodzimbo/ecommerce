@@ -83,11 +83,8 @@ class Basket
 
     }
 
-    public static function activeButton($sess_id)
-    {
-
-        if(isset($_SESSION['basket'][$sess_id]))
-        {
+    public static function activeButton($sess_id) {
+        if(isset($_SESSION['basket'][$sess_id])) {
             $id = 0;
             $label = "Usuń z koszyka";
         } else {
@@ -95,12 +92,11 @@ class Basket
             $label = "Dodaj do koszyka";
         }
 
-        $out = "<a href=\"#\" class=\"add_to_basket";
+        $out  = "<a href=\"#\" class=\"add_to_basket";
         $out .= $id == 0 ? " red" : null;
         $out .= "\" rel=\"";
         $out .= $sess_id."_".$id;
         $out .= "\">{$label}</a>";
-
         return $out;
     }
 
