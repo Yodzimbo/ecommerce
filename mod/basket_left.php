@@ -11,5 +11,5 @@
     <dd class="bl_total">&pound;<span><?php echo number_format($objBasket->_total, 2); ?></span></dd>
 </dl>
 <div class="dev br_td">&#160;</div>
-<p><a href="/?page=basket">Podgląd koszyka</a> | <a href="/?page=checkout">Sprawdź</a></p>
+<p><a href="/?page=basket">Podgląd koszyka</a> | <a href="/?page=checkout">Do Kasy</a></p>
 <div class="dev br_td">&#160;</div>

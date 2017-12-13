@@ -100,4 +100,26 @@ class Basket
         return $out;
     }
 
+    public function itemTotal($price = null, $qty = null)
+    {
+        if(!empty($price) && !empty($qty))
+        {
+            return round(($price * $qty), 2);
+        }
+    }
+
+    public static function removeButton($id = null)
+    {
+        if(!empty($id))
+        {
+            if(isset($_SESSION['basket'][$id]))
+            {
+                $out = "<a href=\"#\" class=\"remove_basket red";
+                $out .= "\" rel=\"{$id}\">Usuń</a>";
+
+                return $out;
+            }
+        }
+    }
+
 }
