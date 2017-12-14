@@ -78,4 +78,13 @@ class Helper
         return $string;
     }
 
+    public static function redirect($url = null)
+    {
+        if(!empty($url))
+        {
+            header("Location: {$url}");
+            exit;
+        }
+    }
+
 }

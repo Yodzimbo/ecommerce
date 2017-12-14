@@ -6,6 +6,8 @@
  * Time: 14:21
  */
 
+Login::restrictFront();
+
 $objForm = new Form();
 
 $objValid = new Validation($objForm);
