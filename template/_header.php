@@ -28,7 +28,7 @@
                 <div id="left">
                     <?php require_once('basket_left.php'); ?>
                     <?php if (!empty($cats)) { ?>
-                        <h2>Categories</h2>
+                        <h2>Kategorie</h2>
                         <ul id="navigation">
                             <?php
                             foreach($cats as $cat) {

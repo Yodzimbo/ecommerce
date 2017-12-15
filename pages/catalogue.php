@@ -26,7 +26,7 @@ if(empty($cat)) {
         require_once("_header.php");
         ?>
 
-        <h1>Catalogue :: <?php echo $category['name']; ?></h1>
+        <h1>Katalog :: <?php echo $category['name']; ?></h1>
 
         <?php
         if(!empty($rows)) {

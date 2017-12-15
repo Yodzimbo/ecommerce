@@ -43,6 +43,14 @@ class Login
         }
     }
 
+    public static function loginFront($id, $url = null)
+    {
+        $url = !empty($url) ? $url : self::$_dashboard_front;
+        $_SESSION[self::$_login_front] = $id;
+        $_SESSION[self::$_valid_login] = 1;
+        Helper::redirect($url);
+    }
+
     public static function string2hash($string = null)
     {
         if(!empty($string))
