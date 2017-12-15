@@ -25,4 +25,28 @@ class User extends Application
         return false;
     }
 
+    public function addUser($params = null, $password = null)
+    {
+        if(!empty($params) && !empty($password))
+        {
+            $this->db->prepareInsert($params);
+            if($this->db->insert($this->_table))
+            {
+//                send email
+                $objEmail = new Email();
+                if($objEmail->process(1, array(
+                    'email'         => $params['email'],
+                    'first_name'    => $params['first_name'],
+                    'last_name'     => $params['last_name'],
+                    'password'      => $password,
+                    'hash'          => $params['hash']
+                ))){
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        return false;
+    }
 }

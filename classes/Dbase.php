@@ -139,4 +139,33 @@ class Dbase
 
     }
 
+    public function prepareInsert($array = null)
+    {
+        if(!empty($array))
+        {
+            foreach ($array as $key => $value)
+            {
+                $this->_insert_keys[] = $key;
+                $this->_insert_values[] = $this->escape($value);
+            }
+        }
+    }
+
+    public function insert($table = null)
+    {
+        if (!empty($table) && !empty($this->_insert_keys) && !empty($this->_insert_values))
+        {
+            $sql = "INSERT INTO {$table} (";
+            $sql .= implode(", ", $this->_insert_keys);
+            $sql .= ") VALUES ('";
+            $sql .= implode("', '", $this->_insert_values);
+            $sql .= "')";
+
+            if($this->query($sql))
+            {
+                $this->_id = $this->lastId();
+                return true;
+            }
+        }
+    }
 }

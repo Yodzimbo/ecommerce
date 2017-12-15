@@ -78,7 +78,17 @@ if($objForm->isPost('first_name'))
 
     if($objValid->isValid())
     {
+//        add hash for activating account
+        $objValid->_post['hash'] = mt_rand().date('YmdHis').mt_rand();
+//        add registration date
+        $objValid->_post['date'] = Helper::setDate();
 
+        if($objUser->addUser($objValid->_post, $objForm->getPost('password')))
+        {
+            Helper::redirect('/?page=registered');
+        } else {
+            Helper::redirect('/?page=registered-failed');
+        }
     }
 }
 
@@ -131,7 +141,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('first_name'); ?>
-                <input type="text" name="first_name" id="first_name" class="fld" value="" />
+                <input type="text" name="first_name" id="first_name" class="fld" value="<?php $objForm->stickyText('first_name'); ?>" />
             </td>
         </tr>
         <tr>
@@ -140,7 +150,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('last_name'); ?>
-                <input type="text" name="last_name" id="last_name" class="fld" value="" />
+                <input type="text" name="last_name" id="last_name" class="fld" value="<?php $objForm->stickyText('last_name'); ?>" />
             </td>
         </tr>
         <tr>
@@ -149,7 +159,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('address_1'); ?>
-                <input type="text" name="address_1" id="address_1" class="fld" value="" />
+                <input type="text" name="address_1" id="address_1" class="fld" value="<?php $objForm->stickyText('address_1'); ?>" />
             </td>
         </tr>
         <tr>
@@ -158,7 +168,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('address_2'); ?>
-                <input type="text" name="address_2" id="address_2" class="fld" value="" />
+                <input type="text" name="address_2" id="address_2" class="fld" value="<?php $objForm->stickyText('address_2'); ?>" />
             </td>
         </tr>
         <tr>
@@ -167,7 +177,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('town'); ?>
-                <input type="text" name="town" id="town" class="fld" value="" />
+                <input type="text" name="town" id="town" class="fld" value="<?php $objForm->stickyText('town'); ?>" />
             </td>
         </tr>
         <tr>
@@ -176,7 +186,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('county'); ?>
-                <input type="text" name="county" id="county" class="fld" value="" />
+                <input type="text" name="county" id="county" class="fld" value="<?php $objForm->stickyText('county'); ?>" />
             </td>
         </tr>
         <tr>
@@ -185,7 +195,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('post_code'); ?>
-                <input type="text" name="post_code" id="post_code" class="fld" value="" />
+                <input type="text" name="post_code" id="post_code" class="fld" value="<?php $objForm->stickyText('post_code'); ?>" />
             </td>
         </tr>
         <tr>
@@ -203,7 +213,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('email'); ?>
-                <input type="email" name="email" id="email" class="fld" value="" />
+                <input type="email" name="email" id="email" class="fld" value="<?php $objForm->stickyText('email'); ?>" />
             </td>
         </tr>
         <tr>
@@ -212,7 +222,7 @@ require_once ('_header.php');
             </th>
             <td>
                 <?php echo $objValid->validate('password'); ?>
-                <?php echo $objValid->validate('password_mismatch'); ?>
+                <?php echo $objValid->validate('mismatch_password'); ?>
                 <input type="password" name="password" id="password" class="fld" value="" />
             </td>
         </tr>
