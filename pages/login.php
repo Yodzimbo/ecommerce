@@ -26,6 +26,62 @@ if($objForm->isPost('login_email'))
     }
 }
 
+//registration form
+if($objForm->isPost('first_name'))
+{
+    $objValid->_expected = array(
+        'first_name',
+        'last_name',
+        'address_1',
+        'address_2',
+        'town',
+        'county',
+        'post_code',
+        'country',
+        'email',
+        'password',
+        'confirm_password'
+    )
+    ;$objValid->_required = array(
+        'first_name',
+        'last_name',
+        'address_1',
+        'town',
+        'county',
+        'post_code',
+        'country',
+        'email',
+        'password',
+        'confirm_password'
+    );
+
+    $objValid->_special = array(
+        'email' => 'email'
+    );
+
+    $objValid->_post_remove = array(
+        'confirm_password'
+    );
+
+    $objValid->_post_format = array(
+        'password' => 'password'
+    );
+
+//    password validate
+    $pass_1 = $objForm->getPost('password');
+    $pass_2 = $objForm->getPost('confirm_password');
+
+    if(!empty($pass_1) && !empty($pass_2) && $pass_1 != $pass_2)
+    {
+        $objValid->add2Errors('password_mismatch');
+    }
+
+    if($objValid->isValid())
+    {
+
+    }
+}
+
 require_once ('_header.php');
 
 ?>
@@ -39,6 +95,7 @@ require_once ('_header.php');
                 <label for="login_email">Login: </label>
             </th>
             <td>
+                <?php echo $objValid->validate('login'); ?>
                 <input type="text" name="login_email" id="login_email" class="fld" value="" />
             </td>
         </tr>
@@ -73,6 +130,7 @@ require_once ('_header.php');
                 <label for="first_name">Imię: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('first_name'); ?>
                 <input type="text" name="first_name" id="first_name" class="fld" value="" />
             </td>
         </tr>
@@ -81,6 +139,7 @@ require_once ('_header.php');
                 <label for="last_name">Nazwisko: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('last_name'); ?>
                 <input type="text" name="last_name" id="last_name" class="fld" value="" />
             </td>
         </tr>
@@ -89,6 +148,7 @@ require_once ('_header.php');
                 <label for="address_1">Adres 1: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('address_1'); ?>
                 <input type="text" name="address_1" id="address_1" class="fld" value="" />
             </td>
         </tr>
@@ -97,6 +157,7 @@ require_once ('_header.php');
                 <label for="address_2">Adres 2: </label>
             </th>
             <td>
+                <?php echo $objValid->validate('address_2'); ?>
                 <input type="text" name="address_2" id="address_2" class="fld" value="" />
             </td>
         </tr>
@@ -105,6 +166,7 @@ require_once ('_header.php');
                 <label for="town">Miasto: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('town'); ?>
                 <input type="text" name="town" id="town" class="fld" value="" />
             </td>
         </tr>
@@ -113,6 +175,7 @@ require_once ('_header.php');
                 <label for="county">Województwo: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('county'); ?>
                 <input type="text" name="county" id="county" class="fld" value="" />
             </td>
         </tr>
@@ -121,6 +184,7 @@ require_once ('_header.php');
                 <label for="post_code">kod pocztowy: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('post_code'); ?>
                 <input type="text" name="post_code" id="post_code" class="fld" value="" />
             </td>
         </tr>
@@ -129,6 +193,7 @@ require_once ('_header.php');
                 <label for="country">Kraj: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('country'); ?>
                 <?php echo $objForm->getCountriesSelect(175); ?>
             </td>
         </tr>
@@ -137,7 +202,18 @@ require_once ('_header.php');
                 <label for="email">Email: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('email'); ?>
                 <input type="email" name="email" id="email" class="fld" value="" />
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <label for="password">Hasło: *</label>
+            </th>
+            <td>
+                <?php echo $objValid->validate('password'); ?>
+                <?php echo $objValid->validate('password_mismatch'); ?>
+                <input type="password" name="password" id="password" class="fld" value="" />
             </td>
         </tr>
         <tr>
@@ -145,6 +221,7 @@ require_once ('_header.php');
                 <label for="confirm_password">Potwierdź hasło: *</label>
             </th>
             <td>
+                <?php echo $objValid->validate('confirm_password'); ?>
                 <input type="password" name="confirm_password" id="confirm_password" class="fld" value="" />
             </td>
         </tr>

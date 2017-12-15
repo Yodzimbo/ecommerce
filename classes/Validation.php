@@ -15,14 +15,18 @@ class Validation
     private $_error = array();
 //    validation messages
     public $message = array(
-        'first_name'    => "Proszę podać swoje imię",
-        'last_name'     => "Proszę podać swoje nazwisko",
-        'address_1'     => "Proszę podać swój adres",
-        'town'          => "Proszę podać swoje miasto",
-        'county'        => "Proszę podać swoje województwo",
-        'post_code'     => "Proszę podać swoój kod pocztowy",
-        'country'       => "Proszę podać swój kraj",
-        'email'         => "Proszę podać swój email"
+        'first_name'        => "Proszę podać swoje imię",
+        'last_name'         => "Proszę podać swoje nazwisko",
+        'address_1'         => "Proszę podać swój adres",
+        'town'              => "Proszę podać swoje miasto",
+        'county'            => "Proszę podać swoje województwo",
+        'post_code'         => "Proszę podać swoój kod pocztowy",
+        'country'           => "Proszę podać swój kraj",
+        'email'             => "Proszę podać swój email",
+        'login'             => "Nazwa użytkownika i/lub hasło jest nieprawidłowe",
+        'password'          => "Proszę wpisać swoje hasło",
+        'confirm_password'  => "Proszę potwierdzić swoje hasło",
+        'mismatch_password' => "Hasła nie są zgodne"
     );
 
 //    list of expected fields
