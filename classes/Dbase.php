@@ -35,27 +35,27 @@ class Dbase
     private function connect()
     {
 
-        $this->_conndb = mysql_connect($this->_host, $this->_user,$this->_password);
+        $this->_conndb = mysqli_connect($this->_host, $this->_user,$this->_password);
 
         if(!$this->_conndb)
         {
-            die("Połączenie z bazą nieudane:<br />" . mysql_error());
+            die("Połączenie z bazą nieudane:<br />" . mysqli_connect_error());
         } else {
-            $_select = mysql_select_db($this->_dbname, $this->_conndb);
+            $_select = mysqli_select_db($this->_conndb, $this->_dbname);
             if(!$_select)
             {
-                die("Wybranie bazy danych nieudane:<br />" . mysql_error());
+                die("Wybranie bazy danych nieudane:<br />" . mysqli_connect_error());
             }
         }
 
-        mysql_set_charset("utf8", $this->_conndb);
+        mysqli_set_charset($this->_conndb ,"utf8");
 
     }
 
     public function close()
     {
 
-        if(!mysql_close($this->_conndb))
+        if(!mysqli_close($this->_conndb))
         {
             die("Połączenie nieudane");
         }
@@ -72,7 +72,7 @@ class Dbase
                 $value = stripcslashes($value);
             }
 
-            $value = mysql_real_escape_string($value);
+            $value = mysqli_real_escape_string($this->_conndb, $value);
 
         } else {
 
@@ -91,7 +91,7 @@ class Dbase
     {
 
         $this->_last_query = $sql;
-        $result = mysql_query($sql, $this->_conndb);
+        $result = mysqli_query($this->_conndb, $sql);
         $this->displayQuery($result);
         return $result;
 
@@ -102,11 +102,11 @@ class Dbase
 
         if(!$result)
         {
-            $output = "Kwerenda bazy danych nieudana: ". mysql_error() . "<br />";
+            $output = "Kwerenda bazy danych nieudana: ". mysqli_connect_error() . "<br />";
             $output .= "Ostatnia kwerenda była: ".$this->_last_query;
             die($output);
         } else {
-            $this->_affected_rows = mysql_affected_rows($this->_conndb);
+            $this->_affected_rows = mysqli_affected_rows($this->_conndb);
         }
 
     }
@@ -116,11 +116,11 @@ class Dbase
 
         $result = $this->query($sql);
         $out = array();
-        while($row = mysql_fetch_assoc($result))
+        while($row = mysqli_fetch_assoc($result))
         {
             $out[] = $row;
         }
-        mysql_free_result($result);
+        mysqli_free_result($result);
         return $out;
     }
 
@@ -135,7 +135,7 @@ class Dbase
     public function lastId()
     {
 
-        return mysql_insert_id($this->_conndb);
+        return mysqli_insert_id($this->_conndb);
 
     }
 
