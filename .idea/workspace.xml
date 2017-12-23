@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1bcc9f9f-823c-4f49-bfd8-e0a2112c99be" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Dbase.php" afterPath="$PROJECT_DIR$/classes/Dbase.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -338,7 +337,7 @@
       <updated>1512472772915</updated>
       <workItem from="1512472774165" duration="82454000" />
       <workItem from="1513890748603" duration="1477000" />
-      <workItem from="1514062799122" duration="1554000" />
+      <workItem from="1514062799122" duration="1614000" />
     </task>
     <task id="LOCAL-00001" summary="basket update">
       <created>1513104349385</created>
@@ -410,11 +409,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513374666620</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="php version update 5.3 to 5.6, change mysql to mysqli">
+      <created>1514064413518</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1514064413518</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85485000" />
+    <option name="totallyTimeSpent" value="85545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="-8" width="1696" height="1066" extended-state="6" />
@@ -454,7 +460,8 @@
     <MESSAGE value="login logic" />
     <MESSAGE value="finish login form validation" />
     <MESSAGE value="add PHPMailer 1/2" />
-    <option name="LAST_COMMIT_MESSAGE" value="add PHPMailer 1/2" />
+    <MESSAGE value="php version update 5.3 to 5.6, change mysql to mysqli" />
+    <option name="LAST_COMMIT_MESSAGE" value="php version update 5.3 to 5.6, change mysql to mysqli" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
